@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Artwork - Picverse</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Picverse</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="submission.html" class="active">Submit</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-actions">
+                <a href="#" class="icon-btn"><i class="fas fa-bell"></i></a>
+                <a href="#" class="icon-btn"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="icon-btn"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="submission-header">
+            <div class="container">
+                <h1>Submit Your Artwork</h1>
+                <p>Share your creativity with the Picverse community</p>
+            </div>
+        </section>
+
+        <section class="submission-form-section">
+            <div class="container">
+                <form id="artworkSubmissionForm" class="submission-form">
+                    <div class="form-group">
+                        <label for="email">Email Address <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="title">Artwork Title <span class="required">*</span></label>
+                        <input type="text" id="title" name="title" required>
+                        <div class="error-message" id="titleError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description <span class="required">*</span></label>
+                        <textarea id="description" name="description" rows="5" required></textarea>
+                        <div class="error-message" id="descriptionError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">Tags <span class="required">*</span></label>
+                        <!-- Recommended Tags Section -->
+                        <div class="recommended-tags-section">
+                            <h4>Recommended Tags</h4>
+                            <div class="recommended-tags">
+                                <button type="button" class="tag-btn" data-tag="DigitalArt">#DigitalArt</button>
+                                <button type="button" class="tag-btn" data-tag="Fantasy">#Fantasy</button>
+                                <button type="button" class="tag-btn" data-tag="SciFi">#SciFi</button>
+                                <button type="button" class="tag-btn" data-tag="Portrait">#Portrait</button>
+                                <button type="button" class="tag-btn" data-tag="Landscape">#Landscape</button>
+                                <button type="button" class="tag-btn" data-tag="CharacterDesign">#CharacterDesign</button>
+                                <button type="button" class="tag-btn" data-tag="ConceptArt">#ConceptArt</button>
+                                <button type="button" class="tag-btn" data-tag="Illustration">#Illustration</button>
+                                <button type="button" class="tag-btn" data-tag="3DArt">#3DArt</button>
+                                <button type="button" class="tag-btn" data-tag="Animation">#Animation</button>
+                                <button type="button" class="tag-btn" data-tag="GameArt">#GameArt</button>
+                                <button type="button" class="tag-btn" data-tag="Abstract">#Abstract</button>
+                                <button type="button" class="tag-btn" data-tag="Anime">#Anime</button>
+                                <button type="button" class="tag-btn" data-tag="Manga">#Manga</button>
+                                <button type="button" class="tag-btn" data-tag="Realistic">#Realistic</button>
+                                <button type="button" class="tag-btn" data-tag="Stylized">#Stylized</button>
+                                <button type="button" class="tag-btn" data-tag="Environment">#Environment</button>
+                                <button type="button" class="tag-btn" data-tag="Vehicle">#Vehicle</button>
+                                <button type="button" class="tag-btn" data-tag="Architecture">#Architecture</button>
+                                <button type="button" class="tag-btn" data-tag="Nature">#Nature</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Selected Tags Display -->
+                        <div class="selected-tags-section">
+                            <h4>Selected Tags</h4>
+                            <div class="selected-tags" id="selectedTags">
+                                <span class="no-tags-message">No tags selected yet</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Manual Tag Input -->
+                        <div class="manual-tags-section">
+                            <h4>Add Custom Tags</h4>
+                            <input type="text" id="customTagInput" placeholder="Type a custom tag and press Enter">
+                            <p class="tag-help">You can also add custom tags by typing them above</p>
+                        </div>
+                        
+                        <!-- Hidden input for form submission -->
+                        <input type="hidden" id="tags" name="tags" required>
+                        <div class="error-message" id="tagsError"></div>
+                    </div>
+
+                    <div class="form-group file-upload">
+                        <label for="artwork">Upload Artwork <span class="required">*</span></label>
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop your file here or</p>
+                            <label for="artwork" class="upload-btn">Browse Files</label>
+                            <input type="file" id="artwork" name="artwork" accept="image/*" required>
+                            <p class="file-info">Maximum file size: 10MB. Supported formats: JPG, PNG, GIF</p>
+                        </div>
+                        <div class="preview-area" id="previewArea">
+                            <img id="imagePreview" src="#" alt="Preview">
+                            <button type="button" id="removeImage" class="remove-btn"><i class="fas fa-times"></i></button>
+                        </div>
+                        <div class="error-message" id="artworkError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Is this artwork AI-generated? <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="aiYes" name="aiGenerated" value="yes" required>
+                                <label for="aiYes">Yes</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="aiNo" name="aiGenerated" value="no">
+                                <label for="aiNo">No</label>
+                            </div>
+                        </div>
+                        <div class="error-message" id="aiGeneratedError"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary-btn" id="resetBtn">Reset</button>
+                        <button type="submit" class="btn primary-btn" id="submitBtn">Submit Artwork</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Picverse</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="submission.html">Submit</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Trending</h3>
+                    <ul>
+                        <li><a href="#">Popular Now</a></li>
+                        <li><a href="#">Most Liked</a></li>
+                        <li><a href="#">Recent Uploads</a></li>
+                        <li><a href="#">Featured Artists</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Copyright Policy</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to get updates on new features and trending artworks.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Picverse. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/submission.js"></script>
+</body>
+</html>
